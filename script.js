@@ -7,9 +7,14 @@ function searchCardsByName(cardName) {
   .then(response => response.json())
   .then(data => {
     console.log("DATA", data)
-    // clearSearchList()
+    clearSearchResults()
     renderSearchResults(data.data)
   })
+}
+
+function clearSearchResults() {
+    const cardList = document.querySelector('#cardsearch-container')
+    cardList.innerHTML = ""
 }
 
 function buildSearchURL(cardName) {
