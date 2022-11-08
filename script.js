@@ -8,7 +8,7 @@ function searchCardsByName(cardName) {
   .then(data => {
     console.log("DATA", data)
     // clearSearchList()
-    // renderSearchResults(data.data)
+    renderSearchResults(data.data)
   })
 }
 
@@ -33,7 +33,7 @@ function renderSearchResult(cardObj) {
     // show card sets
   })
   const cardImage = document.createElement("img")
-  cardImage.src = cardObj.image_uris.normal
+  cardImage.src = cardObj.image_uris.small
 
   cardContainer.appendChild(cardImage)
   cardList.appendChild(cardContainer)
