@@ -11,6 +11,7 @@ function buildSearchURL(cardName) {
 }
 
 function renderSearchResults(results) {
+    results.forEach((result) => {renderSearchResult(result)})
   // for each result...
 }
 
