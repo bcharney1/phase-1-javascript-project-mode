@@ -1,18 +1,23 @@
-const scryfallUrl = 'https://api.scryfall.com/cards/search'
+const scryfallUrl = 'https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&include_variations=false&'
 const savedCards = []
 const searchResults = []
 
-function searchForCard(cardName) {
-  // lblkj
+function searchCardsByName(cardName) {
+  fetch(buildSearchURL(cardName))
+  .then(response => response.json())
+  .then(data => {
+    console.log("DATA", data)
+    // clearSearchList()
+    // renderSearchResults(data.data)
+  })
 }
 
 function buildSearchURL(cardName) {
-  // asldjkfalskdjf
+  return scryfallUrl + 'q=' + cardName
 }
 
 function renderSearchResults(results) {
-    results.forEach((result) => {renderSearchResult(result)})
-  // for each result...
+  results.forEach((result) => { renderSearchResult(result) })
 }
 
 function renderSearchResult(cardObj) {
@@ -51,7 +56,12 @@ function renderSavedCard(cardObj) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
+    const cardSearchForm = document.querySelector("#cardsearch-form")
+    cardSearchForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const searchValue = e.target.elements[0].value
+        searchCardsByName(searchValue)
+    })
   // attach submit handler
 
 })
