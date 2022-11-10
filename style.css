@@ -39,6 +39,7 @@ body {
 
 #cardstorage-container ul {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   overflow-y: auto;
 }
