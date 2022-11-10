@@ -42,8 +42,8 @@ function renderSearchResults(results) {
   results.forEach((result) => { renderSearchResult(result) })
 }
 
-function renderSearchResult(cardObj) {
-  const cardList = document.querySelector('#cardsearch-container')
+function renderCardToContainer(cardObj, containerId) {
+  const cardList = document.querySelector(containerId)
 
   const cardContainer = document.createElement("li")
   cardContainer.id = cardObj.id
@@ -57,12 +57,16 @@ function renderSearchResult(cardObj) {
   cardImage.id = cardObj.id
   cardImage.addEventListener("mouseover", function (e) {
     // show card sets or prices or whatever
-    console.log("HOVERING", e)
     showCardPrice(e)
   })
 
   cardContainer.appendChild(cardImage)
   cardList.appendChild(cardContainer)
+
+}
+
+function renderSearchResult(cardObj) {
+  renderCardToContainer(cardObj, '#cardsearch-container')
 }
 
 function showCardPrice(e) {
@@ -100,25 +104,7 @@ function renderSavedCards() {
 }
 
 function renderSavedCard(cardObj) {
-  console.log(cardObj)
-  const cardList = document.querySelector('#saved-cards')
-
-  const cardContainer = document.createElement("li")
-  cardContainer.id = cardObj.id
-  // click handler attach
-  cardContainer.addEventListener("click", function (e) {
-    saveCard(e)
-  })
-  // hover handler attach
-  cardContainer.addEventListener("hover", function (e) {
-    // show card sets or prices or whatever
-  })
-  const cardImage = document.createElement("img")
-  cardImage.src = cardObj.image_uris.small
-  cardImage.id = cardObj.id
-
-  cardContainer.appendChild(cardImage)
-  cardList.appendChild(cardContainer)
+  renderCardToContainer(cardObj, '#saved-cards')
 }
 
 document.addEventListener("DOMContentLoaded", function () {
