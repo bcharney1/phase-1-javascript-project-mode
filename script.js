@@ -72,11 +72,14 @@ function renderSearchResult(cardObj) {
 function showCardPrice(e) {
   const cardId = e.target.id
   const cardObj = getSearchedCardById(cardId)
-  const cardPrices = cardObj.prices
+  const cardPrice = cardObj.prices.usd
   const cardPriceContainer = document.querySelector('#cardprice-container')
 
-  const priceString = `$${cardPrices.usd}`
-  cardPriceContainer.innerHTML = priceString
+    if (cardPrice === null) {
+      cardPriceContainer.innerHTML = 'N/A'
+    } else {
+      cardPriceContainer.innerHTML = `$${cardPrice}`
+    }
 }
 
 function saveCard(e) {
