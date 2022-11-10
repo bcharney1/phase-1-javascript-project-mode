@@ -1,12 +1,15 @@
 body {
   background-color: gray;
   font-family: sans-serif;
+  overflow-x: hidden;
 }
+
 
 #cardsearch-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 200px;
 }
 
 #cardsearch-container {
@@ -14,5 +17,22 @@ body {
   width: 100%;
   list-style: none;
   flex-wrap: wrap;
+  margin-right: 200px;
 }
 
+#cardstorage-container {
+  position: fixed;
+  width: 200px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: slategray;
+  border-top: 1px solid black;
+  z-index: 1;
+}
+
+#cardstorage-container ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
