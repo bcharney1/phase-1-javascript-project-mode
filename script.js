@@ -71,11 +71,8 @@ function showCardPrice(e) {
   const cardPrices = cardObj.prices
   const cardPriceContainer = document.querySelector('#cardprice-container')
 
-  const priceString = `Price: $${cardPrices.usd}`
-  const priceP = document.createElement('p')
-  priceP.innerHTML = priceString
-  cardPriceContainer.innerHTML = ''
-  cardPriceContainer.append(priceP)
+  const priceString = `$${cardPrices.usd}`
+  cardPriceContainer.innerHTML = priceString
 }
 
 function saveCard(e) {
