@@ -4,6 +4,11 @@ body {
   overflow-x: hidden;
 }
 
+#cardsearch-section {
+  width: calc(100% - 250px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 #cardsearch-form {
   display: flex;
@@ -18,21 +23,23 @@ body {
   list-style: none;
   flex-wrap: wrap;
   margin-right: 200px;
+  overflow-x: hidden;
 }
 
 #cardstorage-container {
   position: fixed;
-  width: 200px;
+  width: 230px;
   right: 0;
   top: 0;
   height: 100%;
   background-color: slategray;
-  border-top: 1px solid black;
   z-index: 1;
+  overflow-y: auto;
 }
 
 #cardstorage-container ul {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
