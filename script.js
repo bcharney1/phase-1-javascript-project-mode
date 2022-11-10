@@ -53,7 +53,9 @@ function renderCardToContainer(cardObj, containerId) {
   })
   // hover handler attach
   const cardImage = document.createElement("img")
-  cardImage.src = cardObj.image_uris.small
+  if (cardObj.image_uris != null) {
+    cardImage.src = cardObj.image_uris.small
+  }
   cardImage.id = cardObj.id
   cardImage.addEventListener("mouseover", function (e) {
     // show card sets or prices or whatever
