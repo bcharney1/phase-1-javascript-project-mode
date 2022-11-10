@@ -33,7 +33,6 @@ body {
   top: 0;
   height: 100%;
   background-color: slategray;
-  z-index: 1;
   overflow-y: auto;
 }
 
