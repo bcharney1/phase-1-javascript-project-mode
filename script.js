@@ -52,19 +52,30 @@ function renderSearchResult(cardObj) {
     saveCard(e)
   })
   // hover handler attach
-  cardContainer.addEventListener("hover", function (e) {
-    // show card sets or prices or whatever
-  })
   const cardImage = document.createElement("img")
   cardImage.src = cardObj.image_uris.small
   cardImage.id = cardObj.id
+  cardImage.addEventListener("mouseover", function (e) {
+    // show card sets or prices or whatever
+    console.log("HOVERING", e)
+    showCardPrice(e)
+  })
 
   cardContainer.appendChild(cardImage)
   cardList.appendChild(cardContainer)
 }
 
-function displayCardSets(cardObj) {
+function showCardPrice(e) {
+  const cardId = e.target.id
+  const cardObj = getSearchedCardById(cardId)
+  const cardPrices = cardObj.prices
+  const cardPriceContainer = document.querySelector('#cardprice-container')
 
+  const priceString = `Price: $${cardPrices.usd}`
+  const priceP = document.createElement('p')
+  priceP.innerHTML = priceString
+  cardPriceContainer.innerHTML = ''
+  cardPriceContainer.append(priceP)
 }
 
 function saveCard(e) {
@@ -92,6 +103,7 @@ function renderSavedCards() {
 }
 
 function renderSavedCard(cardObj) {
+  console.log(cardObj)
   const cardList = document.querySelector('#saved-cards')
 
   const cardContainer = document.createElement("li")
