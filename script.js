@@ -6,7 +6,7 @@ function searchCardsByName(cardName) {
   fetch(buildSearchURL(cardName))
     .then(response => response.json())
     .then(data => {
-      clearSearchResults()
+      clearElement('#cardsearch-container')
       searchResults = data.data
       renderSearchResults(data.data)
     })
@@ -24,14 +24,9 @@ function getSearchedCardById(cardId) {
   return grabbedCard
 }
 
-function clearSearchResults() {
-  const cardList = document.querySelector('#cardsearch-container')
-  cardList.innerHTML = ""
-}
-
-function clearSavedCards() {
-  const cardList = document.querySelector('#saved-cards')
-  cardList.innerHTML = ""
+function clearElement(id) {
+  const element = document.querySelector(id)
+  element.innerHTML = ""
 }
 
 function buildSearchURL(cardName) {
@@ -104,7 +99,7 @@ function saveCard(e) {
 
 function renderSavedCards() {
   // for each saved card...
-  clearSavedCards()
+  clearElement('#saved-cards')
   savedCards.forEach((savedCard) => {renderSavedCard(savedCard)})
 }
 
