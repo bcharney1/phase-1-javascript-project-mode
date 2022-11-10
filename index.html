@@ -11,14 +11,19 @@
 
 <body>
   <h1>MtG Card Search</h1>
-  <form id="cardsearch-form">
-    <input type="text" name="card-name" id="card-name" />
-    <input type="submit" name="search" id="search" />
-  </form>
-  <div id="cardsets-container"></div>
-  <ul id="cardsearch-container"></ul>
-  <!-- Card image container -->
-  <div id="cardstorage-container"></div>
+  <div id="cardsearch-section">
+    <form id="cardsearch-form">
+      <input type="text" name="card-name" id="card-name" />
+      <input type="submit" name="search" id="search" />
+    </form>
+    <div id="cardsets-container"></div>
+    <ul id="cardsearch-container"></ul>
+    <!-- Card image container -->
+  </div>
+  <div id="cardstorage-container">
+    <h2>Saved Cards</h2>
+    <ul id="saved-cards"></ul>
+  </div>
   <!-- Card storage container -->
 </body>
 
