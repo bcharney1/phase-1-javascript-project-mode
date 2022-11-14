@@ -53,7 +53,7 @@ function renderCardToContainer(cardObj, containerId) {
   }
   cardImage.id = cardObj.id
   cardImage.addEventListener("mouseover", function (e) {
-    // show card sets or prices or whatever
+    // show card prices
     showCardPrice(e)
   })
 
