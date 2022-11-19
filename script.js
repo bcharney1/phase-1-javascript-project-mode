@@ -12,23 +12,6 @@ function searchCardsByName(cardName) {
     })
 }
 
-function getSearchedCardById(cardId) {
-  let grabbedCard = null
-
-  searchResults.forEach((card) => {
-    if (card.id === cardId) {
-      grabbedCard = card
-    }
-  })
-
-  return grabbedCard
-}
-
-function clearElement(id) {
-  const element = document.querySelector(id)
-  element.innerHTML = ""
-}
-
 function buildSearchURL(cardName) {
   return scryfallUrl + 'q=' + cardName
 }
@@ -37,25 +20,27 @@ function renderSearchResults(results) {
   results.forEach((result) => { renderSearchResult(result) })
 }
 
+function getSearchedCardById(cardId) {
+  return searchResults.find((card) => card.id === cardId)
+}
+
+function clearElement(id) {
+  const element = document.querySelector(id)
+  element.innerHTML = ""
+}
+
 function renderCardToContainer(cardObj, containerId) {
   const cardList = document.querySelector(containerId)
 
   const cardContainer = document.createElement("li")
   cardContainer.id = cardObj.id
-  // click handler attach
-  cardContainer.addEventListener("click", function (e) {
-    saveCard(e)
-  })
-  // hover handler attach
+  cardContainer.addEventListener("click", saveCard)
   const cardImage = document.createElement("img")
   if (cardObj.image_uris != null) {
     cardImage.src = cardObj.image_uris.small
   }
   cardImage.id = cardObj.id
-  cardImage.addEventListener("mouseover", function (e) {
-    // show card prices
-    showCardPrice(e)
-  })
+  cardImage.addEventListener("mouseover", showCardPrice)
 
   cardContainer.appendChild(cardImage)
   cardList.appendChild(cardContainer)
