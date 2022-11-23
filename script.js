@@ -2,6 +2,7 @@ const scryfallUrl = 'https://api.scryfall.com/cards/search?format=json&include_e
 let savedCards = []
 let searchResults = []
 
+//fetch at url, get data, clear previous search, render new results
 function searchCardsByName(cardName) {
   fetch(buildSearchURL(cardName))
     .then(response => response.json())
@@ -16,6 +17,7 @@ function buildSearchURL(cardName) {
   return scryfallUrl + 'q=' + cardName
 }
 
+//render each result
 function renderSearchResults(results) {
   results.forEach((result) => { renderSearchResult(result) })
 }
@@ -24,11 +26,13 @@ function getSearchedCardById(cardId) {
   return searchResults.find((card) => card.id === cardId)
 }
 
+//function to clear search
 function clearElement(id) {
   const element = document.querySelector(id)
   element.innerHTML = ""
 }
 
+//add card to side panel on click, and shows price on mouseover
 function renderCardToContainer(cardObj, containerId) {
   const cardList = document.querySelector(containerId)
 
@@ -65,25 +69,25 @@ function showCardPrice(e) {
 }
 
 function saveCard(e) {
-  // get card id from e.target.id
+  //get card id from e.target.id
   const cardId = e.target.id
   const isAlreadySaved = savedCards.some((card) => card.id === cardId)
 
   if (isAlreadySaved) {
     savedCards = savedCards.filter((card) => card.id !== cardId)
   } else {
-    // pass this id to getSearchedCardById, storing result in a variable
+    //pass this id to getSearchedCardById, storing result in a variable
     const searchedCard = getSearchedCardById(cardId)
-    // add the value in the variable to savedCards
+    //add the value in the variable to savedCards
     savedCards = [...savedCards, searchedCard]
   }
 
-  // render the list of saved cards to the page (cardstorage-container)
+  //render the list of saved cards to the page (cardstorage-container)
   renderSavedCards()
 }
 
 function renderSavedCards() {
-  // for each saved card...
+  //only allow for one copy of each card to show in the side panel
   clearElement('#saved-cards')
   savedCards.forEach((savedCard) => {renderSavedCard(savedCard)})
 }
@@ -92,6 +96,7 @@ function renderSavedCard(cardObj) {
   renderCardToContainer(cardObj, '#saved-cards')
 }
 
+//search on submit
 document.addEventListener("DOMContentLoaded", function () {
   const cardSearchForm = document.querySelector("#cardsearch-form")
   cardSearchForm.addEventListener("submit", (e) => {
